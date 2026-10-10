@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salão Jacarandá · estudo de Arthur Medeiros</title>
+<meta name="description" content="Estudo com cliente fictício: site de salão de beleza com serviços, valores e pedido de horário. Feito por Arthur Medeiros.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap">
+<style>
+/* Salão Jacarandá: estudo com cliente fictício. Roxo do jacarandá, serifa com itálico, formas de arco. */
+:root{
+  --bg:#F7F1F4; --ink:#2A1630; --dim:#6E5A72; --soft:#EADCE6; --card:#FFFFFF; --accent:#7A3E9D; --accent-2:#63307F; --on:#FFFFFF; --open:#2F7D4F;
+  --serif:"Fraunces",Georgia,serif; --sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+
+.demo{background:var(--ink);color:var(--bg);font-size:13px}
+.demo .wrap{display:flex;justify-content:space-between;gap:6px 20px;flex-wrap:wrap;padding-block:9px}
+.demo a{color:#E6CFF2}
+
+header .wrap{display:flex;align-items:center;gap:24px;padding-block:20px}
+.logo{font-family:var(--serif);font-size:28px;font-weight:600;text-decoration:none;margin-right:auto;line-height:1}
+.logo small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-weight:500;margin-top:5px}
+nav{display:flex;gap:22px}
+nav a{text-decoration:none;color:var(--dim)}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:var(--on);text-decoration:none;border:1.5px solid var(--accent);border-radius:999px;padding:12px 22px;font:600 15px/1.1 var(--sans);cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:var(--accent-2);border-color:var(--accent-2)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(28px,6vw,72px)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,7.4vw,96px);line-height:.98;letter-spacing:-.02em;margin:0 0 22px}
+h1 em{color:var(--accent)}
+.lead{font-size:clamp(18px,1.6vw,21px);color:var(--dim);max-width:36ch;margin:0 0 28px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:14px;margin-bottom:22px;padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--soft)}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--dim)}
+.status.open i{background:var(--open)}
+.art{position:relative;aspect-ratio:4/5;max-width:420px;width:100%;justify-self:end}
+.arch{position:absolute;inset:0 0 0 12%;border-radius:999px 999px 0 0;background:linear-gradient(165deg,#9B5FC0,#4E2368);overflow:hidden}
+.arch.line{inset:7% 16% -4% 0;background:none;border:1.5px solid var(--accent)}
+.bloom{position:absolute;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 35%,#EBDAF3,#C29BD9 55%,#9B5FC0)}
+.art .tag{position:absolute;left:0;bottom:10%;background:var(--card);border:1px solid var(--soft);padding:12px 16px;font-size:14px;border-radius:16px;color:var(--dim)}
+.art .tag b{display:block;font-family:var(--serif);font-size:20px;font-weight:600;color:var(--ink)}
+
+section{padding-block:clamp(48px,7vw,88px)}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,56px);line-height:1.05;margin:0 0 10px;letter-spacing:-.01em}
+.sub{color:var(--dim);margin:0 0 32px;max-width:54ch}
+
+.services{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:start}
+.cat{margin:0 0 28px;border:0;padding:0;min-width:0}
+.cat legend{font:600 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;padding:0}
+.svc{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 14px;align-items:center;padding:14px 8px;border-bottom:1px solid var(--soft);cursor:pointer;border-radius:10px;transition:background .2s}
+.svc:hover{background:rgba(122,62,157,.06)}
+.svc:has(input:checked){background:rgba(122,62,157,.1)}
+.svc input{width:20px;height:20px;accent-color:var(--accent);margin:0;grid-row:1 / span 2}
+.svc .n{font-size:18px}
+.svc .m{grid-column:2;font-size:14px;color:var(--dim)}
+.svc .p{grid-row:1 / span 2;grid-column:3;font-family:var(--serif);font-size:21px;white-space:nowrap;text-align:right;line-height:1.1}
+.svc .p small{display:block;font-family:var(--sans);font-size:11px;color:var(--dim)}
+
+.cart{position:sticky;top:20px;background:var(--card);border:1px solid var(--soft);border-radius:24px;padding:24px}
+.cart h3{font-family:var(--serif);font-weight:600;font-size:26px;margin:0 0 12px}
+.cart ul{list-style:none;margin:0 0 16px;padding:0}
+.cart li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed var(--soft);font-size:15px}
+.cart li.empty{color:var(--dim);border:0}
+.total{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px;font-size:14px;color:var(--dim)}
+.total b{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--ink);line-height:1}
+.cart label{display:block;font-size:13px;color:var(--dim);margin-bottom:12px}
+.cart select{display:block;width:100%;margin-top:4px;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--soft);border-radius:12px;padding:10px 12px}
+.cart .btn{width:100%;margin-top:6px}
+
+.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.person{background:var(--card);border:1px solid var(--soft);border-radius:24px;padding:24px}
+.avatar{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:28px;color:var(--on);margin-bottom:16px}
+.person h3{font-family:var(--serif);font-weight:600;font-size:26px;margin:0}
+.person .role{color:var(--accent);font-size:14px;margin:2px 0 10px;font-weight:600}
+.person p{margin:0;color:var(--dim);font-size:15px}
+
+.info{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:start}
+.hours{list-style:none;margin:0;padding:0}
+.hours li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--soft)}
+.hours li.today{font-weight:600;color:var(--accent)}
+.map{position:relative;aspect-ratio:16/10;border-radius:24px;overflow:hidden;border:1px solid var(--soft);background:
+  linear-gradient(90deg,transparent 46%,#fff 46% 49%,transparent 49%),
+  linear-gradient(0deg,transparent 57%,#fff 57% 61%,transparent 61%),
+  linear-gradient(90deg,transparent 16%,#fff 16% 18%,transparent 18%),
+  linear-gradient(0deg,transparent 20%,#fff 20% 22%,transparent 22%),
+  linear-gradient(90deg,transparent 78%,#D9CBD6 78% 92%,transparent 92%),
+  #E7DDE5}
+.pin{position:absolute;left:52%;top:57%;width:26px;height:26px;margin:-30px 0 0 -13px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--accent);border:3px solid #fff}
+.addr{margin:16px 0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
+
+footer{border-top:1px solid var(--soft);padding-block:28px;color:var(--dim);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+dialog{border:0;border-radius:24px;padding:28px;width:min(460px,calc(100vw - 32px));background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(42,22,48,.55)}
+dialog h3{font-family:var(--serif);font-weight:600;font-size:26px;margin:0 0 8px}
+dialog p{margin:0 0 16px;color:var(--dim)}
+dialog .bubble{background:#DCF8C6;color:#111;border-radius:16px 16px 4px 16px;padding:14px 16px;white-space:pre-wrap;font-size:15px;margin:0 0 22px}
+dialog .row{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+
+@media (max-width:820px){
+  .hero,.services,.info{grid-template-columns:1fr}
+  .art{max-width:300px;justify-self:center}
+  .team{grid-template-columns:1fr}
+  .cart{position:static}
+  nav{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="demo"><div class="wrap"><span>Estudo com cliente fictício · site feito por Arthur Medeiros</span><a href="../../index.html#trabalhos">← voltar ao portfólio</a></div></div>
+
+<header><div class="wrap">
+  <a class="logo" href="#topo">Jacarandá<small>salão de beleza</small></a>
+  <nav aria-label="Seções"><a href="#servicos">Serviços</a><a href="#equipe">Equipe</a><a href="#visite">Horários</a></nav>
+  <a class="btn" href="#servicos">Marcar horário</a>
+</div></header>
+
+<main id="topo">
+  <div class="wrap hero">
+    <div>
+      <span class="status" id="status"><i aria-hidden="true"></i><span>Terça a sábado</span></span>
+      <h1>Seu cabelo do jeito que você <em>imaginou.</em></h1>
+      <p class="lead">Corte, cor e cuidado num salão sem pressa. Escolha os serviços, veja o valor e peça seu horário em menos de um minuto.</p>
+      <div class="ctas"><a class="btn" href="#servicos">Montar meu horário</a><a class="btn ghost" href="#equipe">Conhecer a equipe</a></div>
+    </div>
+    <div class="art" aria-hidden="true">
+      <span class="arch line"></span>
+      <span class="arch">
+        <span class="bloom" style="left:16%;top:14%;width:24%"></span>
+        <span class="bloom" style="left:52%;top:8%;width:16%"></span>
+        <span class="bloom" style="left:58%;top:30%;width:28%"></span>
+        <span class="bloom" style="left:26%;top:40%;width:14%"></span>
+        <span class="bloom" style="left:8%;top:62%;width:20%"></span>
+        <span class="bloom" style="left:54%;top:68%;width:12%"></span>
+      </span>
+      <span class="tag"><b>Ter a sáb</b>com hora marcada</span>
+    </div>
+  </div>
+
+  <section id="servicos"><div class="wrap">
+    <h2>Serviços e valores</h2>
+    <p class="sub">Marque o que você quer fazer. O valor final depende do comprimento e do volume do cabelo, e a gente confirma antes de começar.</p>
+    <div class="services">
+      <form id="svc-form" onsubmit="return false" aria-label="Serviços"></form>
+      <aside class="cart" aria-labelledby="cart-h">
+        <h3 id="cart-h">Seu horário</h3>
+        <ul id="cart-list" aria-live="polite"><li class="empty">Nenhum serviço marcado ainda.</li></ul>
+        <div class="total"><span>a partir de<br><span id="dur">—</span></span><b id="total">R$ 0</b></div>
+        <label>Profissional<select id="pro"><option>Sem preferência</option><option>Inês</option><option>Rafa</option><option>Lu</option></select></label>
+        <label>Melhor dia<select id="dia"><option>Terça</option><option>Quarta</option><option>Quinta</option><option>Sexta</option><option>Sábado</option></select></label>
+        <label>Período<select id="per"><option>Manhã</option><option>Tarde</option><option>Fim da tarde</option></select></label>
+        <button class="btn" id="ask" type="button" disabled>Pedir horário no WhatsApp</button>
+      </aside>
+    </div>
+  </div></section>
+
+  <section id="equipe"><div class="wrap">
+    <h2>Quem vai cuidar de você</h2>
+    <p class="sub">Três pessoas, cada uma com a sua especialidade. Se não souber com quem marcar, a gente indica.</p>
+    <div class="team">
+      <article class="person"><span class="avatar" style="background:#7A3E9D" aria-hidden="true">I</span><h3>Inês</h3><p class="role">Cor e mechas</p><p>Loiros, morenas iluminadas e cor que cresce bonita, sem marcar a raiz.</p></article>
+      <article class="person"><span class="avatar" style="background:#8A5A2B" aria-hidden="true">R</span><h3>Rafa</h3><p class="role">Cortes</p><p>Cortes femininos e masculinos, do clássico ao bem curtinho.</p></article>
+      <article class="person"><span class="avatar" style="background:#3F6E5A" aria-hidden="true">L</span><h3>Lu</h3><p class="role">Tratamentos</p><p>Hidratação e reconstrução para cabelo que sofreu com química ou com o sol.</p></article>
+    </div>
+  </div></section>
+
+  <section id="visite"><div class="wrap">
+    <h2>Horários e endereço</h2>
+    <p class="sub">Atendimento com hora marcada. Encaixe só se sobrar horário no dia.</p>
+    <div class="info">
+      <ul class="hours" id="hours"></ul>
+      <div>
+        <div class="map" aria-hidden="true"><span class="pin"></span></div>
+        <div class="addr"><span>Rua das Acácias, 214 · Centro</span><button class="btn ghost" type="button" id="route">Como chegar</button></div>
+      </div>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>Salão Jacarandá é um cliente fictício. Site feito por Arthur Medeiros como estudo.</span>
+  <a href="../../index.html#contato">Quero um site assim →</a>
+</div></footer>
+
+<dialog id="demo" aria-labelledby="demo-h">
+  <h3 id="demo-h">Isto é uma demonstração</h3>
+  <p id="demo-p"></p>
+  <p class="bubble" id="demo-msg"></p>
+  <div class="row"><a class="btn ghost" href="../../index.html#contato">Quero um site assim</a><button class="btn" type="button" id="demo-close">Entendi</button></div>
+</dialog>
+
+<script>
+(function(){
+  // aviso de demonstração no lugar do WhatsApp de verdade
+  var dlg=document.getElementById('demo'), dp=document.getElementById('demo-p'), dm=document.getElementById('demo-msg');
+  function demo(text,msg){
+    dp.textContent=text; dm.textContent=msg||''; dm.hidden=!msg;
+    if(dlg.showModal) dlg.showModal(); else alert(text+(msg?'\n\n'+msg:''));
+  }
+  document.getElementById('demo-close').addEventListener('click',function(){dlg.close();});
+  dlg.addEventListener('click',function(e){if(e.target===dlg) dlg.close();});
+
+  // serviços: [categoria, [[nome, preço, minutos]]]
+  var services=[
+    ['Cabelo',[['Corte feminino',70,50],['Corte masculino',45,30],['Escova',50,40]]],
+    ['Cor',[['Coloração',160,120],['Mechas',280,180],['Retoque de raiz',110,90]]],
+    ['Tratamento',[['Hidratação',60,40],['Reconstrução',90,60]]]
+  ];
+  function dur(m){var h=Math.floor(m/60), r=m%60; return h ? h+'h'+(r ? (r<10?'0':'')+r : '') : m+' min';}
+  function joinPt(a){return a.length<2 ? a.join('') : a.slice(0,-1).join(', ')+' e '+a[a.length-1];}
+  var form=document.getElementById('svc-form');
+  services.forEach(function(c){
+    var fs=document.createElement('fieldset'); fs.className='cat';
+    var lg=document.createElement('legend'); lg.textContent=c[0]; fs.appendChild(lg);
+    c[1].forEach(function(s){
+      var l=document.createElement('label'); l.className='svc';
+      l.innerHTML='<input type="checkbox"><span class="n"></span><span class="m"></span><span class="p"><small>a partir de</small></span>';
+      var i=l.querySelector('input'); i.value=s[0]; i.dataset.p=s[1]; i.dataset.m=s[2];
+      l.querySelector('.n').textContent=s[0];
+      l.querySelector('.m').textContent='cerca de '+dur(s[2]);
+      l.querySelector('.p').appendChild(document.createTextNode('R$ '+s[1]));
+      fs.appendChild(l);
+    });
+    form.appendChild(fs);
+  });
+
+  var list=document.getElementById('cart-list'), total=document.getElementById('total'), durEl=document.getElementById('dur'), ask=document.getElementById('ask');
+  function picked(){return [].slice.call(form.querySelectorAll('input:checked'));}
+  function update(){
+    var sel=picked(), t=0, m=0;
+    list.innerHTML='';
+    if(!sel.length){ list.innerHTML='<li class="empty">Nenhum serviço marcado ainda.</li>'; }
+    sel.forEach(function(i){
+      t+=+i.dataset.p; m+=+i.dataset.m;
+      var li=document.createElement('li'); li.innerHTML='<span></span><span></span>';
+      li.children[0].textContent=i.value; li.children[1].textContent='R$ '+i.dataset.p; list.appendChild(li);
+    });
+    total.textContent='R$ '+t;
+    durEl.textContent=sel.length ? 'cerca de '+dur(m) : '—';
+    ask.disabled=!sel.length;
+  }
+  form.addEventListener('change',update);
+  ask.addEventListener('click',function(){
+    var sel=picked(), t=0;
+    sel.forEach(function(i){t+=+i.dataset.p;});
+    var msg='Oi! Queria marcar '+joinPt(sel.map(function(i){return i.value.toLowerCase();}))+' (a partir de R$ '+t+').\n'+
+      'Profissional: '+document.getElementById('pro').value+'\n'+
+      'Melhor dia: '+document.getElementById('dia').value+', '+document.getElementById('per').value.toLowerCase();
+    demo('Num site de verdade, este botão abriria o WhatsApp do salão com a mensagem pronta:',msg);
+  });
+  document.getElementById('route').addEventListener('click',function(){
+    demo('Num site de verdade, este botão abriria o Google Maps com a rota até o salão.');
+  });
+
+  // horários e status "aberto agora" no fuso de Brasília
+  var names=['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
+  var hours={2:[9,19],3:[9,19],4:[9,19],5:[9,19],6:[8,17]};
+  function now(){
+    try{
+      var o={}; new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(p){o[p.type]=p.value;});
+      return {d:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[o.weekday], h:(+o.hour)+(+o.minute)/60};
+    }catch(e){var d=new Date(); return {d:d.getDay(),h:d.getHours()+d.getMinutes()/60};}
+  }
+  var n=now(), ul=document.getElementById('hours');
+  [2,3,4,5,6,0,1].forEach(function(d){
+    var li=document.createElement('li'); li.innerHTML='<span></span><span></span>';
+    li.children[0].textContent=names[d]+(d===n.d?' (hoje)':'');
+    li.children[1].textContent=hours[d] ? hours[d][0]+'h às '+hours[d][1]+'h' : 'Fechado';
+    if(d===n.d) li.className='today';
+    ul.appendChild(li);
+  });
+  var st=document.getElementById('status'), txt=st.querySelector('span'), today=hours[n.d];
+  if(today && n.h>=today[0] && n.h<today[1]){ st.classList.add('open'); txt.textContent='Aberto agora · até as '+today[1]+'h'; }
+  else{
+    for(var k=0;k<8;k++){
+      var d=(n.d+k)%7;
+      if(hours[d] && (k>0 || n.h<hours[d][0])){
+        txt.textContent='Fechado agora · abre '+(k===0?'hoje':k===1?'amanhã':names[d].toLowerCase())+' às '+hours[d][0]+'h';
+        break;
+      }
+    }
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arthur Medeiros · Sites para negócios pequenos</title>
+<meta name="description" content="Sites rápidos e fáceis de atualizar para clínicas, salões, lojas, restaurantes e escritórios. Desenho e programo cada página, do rascunho até o site no ar. Rio Grande do Sul.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Arthur Medeiros · Sites para negócios pequenos">
+<meta property="og:description" content="Sites rápidos, fáceis de atualizar e com a cara de quem é dono. Do rascunho até o site no ar.">
+<meta name="theme-color" content="#F7F7F4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%232D3BE8'/%3E%3Ctext x='32' y='46' font-family='Arial,sans-serif' font-weight='700' font-size='38' text-anchor='middle' fill='%23fff'%3Ea.%3C/text%3E%3C/svg%3E">
+<script>try{var t=localStorage.getItem('tema');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: coluna única alinhada à esquerda, nome gigante, índice de trabalhos em linhas (prévia segue o cursor), notas técnicas em mono. Sem cartões, sem sombras. */
+:root{
+  --paper:#F7F7F4; --ink:#121212; --dim:#6B6B66; --rule:#D9D9D3; --blue:#2D3BE8; --on-blue:#FFFFFF; --live:#1E9E5A;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme]){--paper:#121311; --ink:#EDEDE8; --dim:#9A9A93; --rule:#2C2D2A; --blue:#8C95FF; --on-blue:#0D0E1F; --live:#4BD08A; color-scheme:dark}
+}
+:root[data-theme="light"]{color-scheme:light}
+:root[data-theme="dark"]{--paper:#121311; --ink:#EDEDE8; --dim:#9A9A93; --rule:#2C2D2A; --blue:#8C95FF; --on-blue:#0D0E1F; --live:#4BD08A; color-scheme:dark}
+/* paletas extras do botão de cores */
+:root[data-theme="azul"]{--paper:#2330D0; --ink:#F4F5FF; --dim:#C2C6FF; --rule:#4A56E0; --blue:#FFD64A; --on-blue:#14141F; --live:#7CF0B0; color-scheme:dark}
+:root[data-theme="areia"]{--paper:#EFE6D6; --ink:#2A1D12; --dim:#6E5C4A; --rule:#D8CAB2; --blue:#B4380A; --on-blue:#FFFFFF; --live:#3D8B40; color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+img{max-width:100%}
+[hidden]{display:none!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--display);font-size:18px;line-height:1.5;padding-inline:clamp(16px,4vw,48px);padding-block:0 96px;transition:background .3s,color .3s}
+::selection{background:var(--blue);color:var(--on-blue)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+.mono{font-family:var(--mono);font-size:13px;letter-spacing:.02em}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.page{max-width:1180px;margin-inline:auto}
+section[id]{scroll-margin-top:24px}
+
+.bar{display:flex;justify-content:space-between;align-items:baseline;gap:10px 24px;flex-wrap:wrap;padding-block:22px;color:var(--dim)}
+.bar .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--live);margin-right:8px;vertical-align:1px}
+.bar a{text-decoration:none}
+.bar a:hover{color:var(--ink)}
+.bar nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+.bar nav a[href="#contato"]{color:var(--blue)}
+
+.name{font-size:clamp(64px,15.5vw,212px);font-weight:700;letter-spacing:-.055em;line-height:.82;margin:clamp(28px,6vw,72px) 0 0;font-variation-settings:"opsz" 96;text-wrap:balance}
+.name .dotc{color:var(--blue)}
+/* letras que pulam ao passar o mouse */
+.name .l{display:inline-block;transition:transform .45s cubic-bezier(.3,1.7,.5,1),color .25s}
+@media (hover:hover){
+  .name .l:hover{transform:translateY(-.1em) rotate(var(--r,-6deg));color:var(--blue);transition-duration:.15s}
+}
+.intro{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);margin-top:clamp(36px,6vw,72px);align-items:end}
+.intro p.big{font-size:clamp(26px,3.2vw,40px);line-height:1.15;letter-spacing:-.02em;margin:0;text-wrap:pretty;max-width:22ch}
+.intro p.small{margin:0;color:var(--dim);max-width:38ch}
+
+h2{font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin:0 0 18px}
+section{margin-top:clamp(72px,10vw,128px)}
+
+.index{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.index li{border-bottom:1px solid var(--rule)}
+.index a{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1.4fr) auto;gap:20px;align-items:baseline;padding-block:22px;text-decoration:none}
+.index .t{font-size:clamp(26px,3.4vw,44px);letter-spacing:-.03em;line-height:1.05}
+.index .d{color:var(--dim)}
+.index .y{color:var(--dim)}
+.index a:hover .t,.index a:focus-visible .t{color:var(--blue)}
+.index .ghost .t{color:var(--dim)}
+.index .ghost:hover .t{color:var(--blue)}
+.note{margin-top:14px;color:var(--dim)}
+
+/* estudo de caso que abre dentro da lista */
+.study summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0 0 22px;color:var(--dim)}
+.study summary::-webkit-details-marker{display:none}
+.study summary:hover{color:var(--ink)}
+.study summary .plus{display:inline-grid;place-items:center;width:20px;height:20px;border:1px solid currentColor;border-radius:50%;transition:transform .3s}
+.study[open] summary .plus{transform:rotate(45deg)}
+.study-body{padding-bottom:36px;display:grid;gap:28px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 36px;margin:0}
+.facts dt{color:var(--dim)}
+.facts dd{margin:0}
+.study-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.phases{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.phases li{border:0;display:grid;gap:4px}
+.phases b{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--blue);letter-spacing:.02em}
+.phases span{color:var(--dim)}
+
+/* comparação rascunho × final */
+.ba{position:relative;container-type:inline-size;aspect-ratio:16/10;border:1px solid var(--ink);overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.ba:focus-within{outline:2px solid var(--blue);outline-offset:4px}
+.ba .scr{position:absolute;inset:0;padding:4cqw 5cqw;display:grid;align-content:start;gap:2.6cqw}
+.ba .wf{clip-path:inset(0 calc(100% - var(--x,50%)) 0 0)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.ba-line{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;margin-left:-1px;background:var(--blue);pointer-events:none}
+.ba-line::after{content:"↔";position:absolute;top:50%;left:50%;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:var(--blue);color:var(--on-blue);display:grid;place-items:center;font:500 16px/1 var(--mono)}
+.ba-tag{position:absolute;bottom:10px;padding:3px 8px;background:var(--paper);color:var(--ink);border:1px solid var(--ink);pointer-events:none}
+.ba-tag.l{left:10px}.ba-tag.r{right:10px}
+.final{background:#F4F8F7;color:#13272B;font-family:Georgia,serif}
+.final .nav{display:flex;justify-content:space-between;align-items:center;font:600 1.9cqw/1 system-ui,sans-serif}
+.final .links{display:flex;gap:2.6cqw;font-weight:400;opacity:.7}
+.final .btn{background:#1B7A6C;color:#fff;font:600 1.9cqw/1 system-ui,sans-serif;padding:1.3cqw 2cqw;border-radius:.6cqw;justify-self:start}
+.final h4{font-weight:400;font-size:5.8cqw;line-height:1.05;margin:3cqw 0 0;max-width:13ch}
+.final .p{height:1.3cqw;width:52%;background:#C9DAD6}
+.final .p + .p{width:38%}
+.final .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;margin-top:1.4cqw}
+.final .cards b{background:#fff;border:1px solid #D6E3E0;height:13cqw;display:grid;align-content:end;gap:1cqw;padding:1.8cqw}
+.final .cards b::before{content:"";width:3.4cqw;height:3.4cqw;border-radius:50%;background:#1B7A6C;opacity:.85;margin-bottom:auto}
+.final .cards b::after{content:"";height:1cqw;width:70%;background:#D6E3E0}
+.wf{background:#FBFBF8;color:#85857E;font:400 1.7cqw/1.2 var(--mono)}
+.wf .nav{display:flex;justify-content:space-between;align-items:center}
+.wf .box{border:1.5px dashed #B9B9B2;padding:1cqw 1.6cqw}
+.wf .h{border:1.5px dashed #B9B9B2;height:11cqw;width:58%;margin-top:3cqw;display:grid;place-items:center}
+.wf .p{height:1.3cqw;width:52%;background:#E2E2DC}
+.wf .p + .p{width:38%}
+.wf .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;margin-top:1.4cqw}
+.wf .cards b{height:13cqw;border:1.5px dashed #B9B9B2;font-weight:400;display:grid;place-items:center;background:linear-gradient(to top right,transparent calc(50% - 1px),#DADAD4 50%,transparent calc(50% + 1px)),linear-gradient(to top left,transparent calc(50% - 1px),#DADAD4 50%,transparent calc(50% + 1px))}
+.wf .cards b span{background:#FBFBF8;padding:0 .6cqw}
+/* variações das telas por estudo */
+.ba .art{position:absolute;right:5cqw;top:11cqw;width:24cqw;height:26cqw}
+.ba .has-art h4{max-width:11ch}
+.ba .has-art .h{width:50%}
+.wf .art{border:1.5px dashed #B9B9B2;display:grid;place-items:center;background:#FBFBF8}
+.wf .art.arch{border-radius:99cqw 99cqw 0 0}
+.wf .art.round{border-radius:50%;height:24cqw}
+.final.salao{background:#F7F1F4;color:#2A1630}
+.final.salao h4 em{color:#7A3E9D}
+.final.salao .btn{background:#7A3E9D;border-radius:9cqw}
+.final.salao .p,.final.salao .cards b::after{background:#EADCE6}
+.final.salao .cards b{border-color:#EADCE6}
+.final.salao .cards b::before{background:#7A3E9D;border-radius:9cqw 9cqw 0 0;opacity:.8}
+.final.salao .art{border-radius:99cqw 99cqw 0 0;background:radial-gradient(circle at 30% 26%,#E3CDEE 0 9%,transparent 9.5%),radial-gradient(circle at 66% 20%,#C9A2DD 0 7%,transparent 7.5%),radial-gradient(circle at 60% 48%,#D8BCE6 0 11%,transparent 11.5%),radial-gradient(circle at 26% 66%,#C29BD9 0 8%,transparent 8.5%),linear-gradient(165deg,#9B5FC0,#4E2368)}
+.final.cantina{background:repeating-linear-gradient(90deg,#B8321A 0 2.4cqw,#F6E7CC 0 4.8cqw) top/100% 2cqw no-repeat,#FFF8EC;color:#2B160C;font-family:Rockwell,"Roboto Slab",Georgia,serif;padding-top:5.5cqw}
+.final.cantina h4{font-weight:700}
+.final.cantina .btn{background:#B8321A;border-radius:1cqw}
+.final.cantina .p,.final.cantina .cards b::after{background:#F0DFC4}
+.final.cantina .cards b{border:.3cqw solid #2B160C}
+.final.cantina .cards b::before{background:#F2B33D}
+.final.cantina .art{height:24cqw;border-radius:50%;border:.3cqw solid #EADBC0;background:radial-gradient(circle at 36% 38%,#FBF6EA 0 16%,transparent 16.5%),radial-gradient(circle at 64% 35%,#5A2E14 0 14%,transparent 14.5%),radial-gradient(circle at 60% 65%,#4E8F3A 0 15%,transparent 15.5%),radial-gradient(circle at 36% 66%,#A0522D 0 13%,transparent 13.5%),#fff}
+
+/* esboço automático do negócio do visitante */
+.try{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.3fr);gap:clamp(28px,5vw,72px);padding-top:28px;align-items:center}
+.try-q{font-size:clamp(26px,3.2vw,40px);line-height:1.35;letter-spacing:-.02em;margin:0 0 18px;text-wrap:pretty}
+.try-q select,.try-q input{font:inherit;letter-spacing:inherit;color:var(--blue);background:transparent;border:0;border-bottom:2px dashed var(--blue);border-radius:0;padding:0 2px;margin:0;-webkit-appearance:none;appearance:none;cursor:pointer;max-width:100%}
+.try-q input{width:9.5ch;cursor:text}
+.try-q input::placeholder{color:var(--dim);opacity:1}
+.try-q option{color:#121212;background:#fff}
+.try-q .pick::after{color:var(--blue)}
+.try .want{display:inline-block;margin-top:8px}
+.devices{position:relative;padding:0 9% 12% 0}
+.browser,.phone{container-type:inline-size}
+.browser{border:1px solid var(--ink);background:var(--paper)}
+.chrome{display:flex;align-items:center;gap:6px;padding:8px 10px;border-bottom:1px solid var(--ink)}
+.chrome i{width:8px;height:8px;border-radius:50%;border:1px solid var(--ink);flex:none}
+.chrome .url{margin-left:8px;flex:1;min-width:0;padding:3px 10px;border:1px solid var(--rule);color:var(--dim);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:12px}
+.phone{position:absolute;right:0;bottom:0;width:26%;border:1px solid var(--ink);border-radius:18px;padding:5px;background:var(--paper)}
+.phone .site{border-radius:13px;aspect-ratio:9/17}
+.site{container-type:inline-size;aspect-ratio:16/10;overflow:hidden;background:var(--sb);color:var(--si);font-family:var(--sf);display:grid;align-content:start;gap:2.6cqw;padding:3.4cqw 4.4cqw;transition:background .35s,color .35s}
+.s-nav{display:flex;align-items:center;gap:3cqw;font:500 1.7cqw/1 system-ui,sans-serif}
+.s-logo{font-family:var(--sf);font-weight:700;font-size:2.4cqw;margin-right:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:40%}
+.s-links{display:flex;gap:2.6cqw;opacity:.7}
+.s-btn{background:var(--sa);color:var(--so);padding:1.2cqw 2cqw;border-radius:var(--sr,.6cqw);font:600 1.7cqw/1 system-ui,sans-serif;white-space:nowrap;justify-self:start}
+.s-kick{font:600 1.5cqw/1 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--sa);margin-top:1.6cqw}
+.s-name{font-weight:var(--sw,700);font-style:var(--ss,normal);font-size:min(9cqw,calc(150cqw / var(--len,10)));line-height:.95;letter-spacing:-.025em;overflow-wrap:anywhere}
+.s-head{margin:0;font-size:2.6cqw;line-height:1.25;max-width:32ch;opacity:.85}
+.s-btn.big{font-size:1.9cqw;padding:1.6cqw 2.6cqw}
+.s-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;margin-top:1cqw}
+.s-cards b{background:var(--sc);border:1px solid var(--sl);padding:1.8cqw;font:600 1.7cqw/1.2 system-ui,sans-serif;display:grid;gap:1.4cqw;height:11cqw;align-content:end}
+.s-cards b::before{content:"";width:2.8cqw;height:2.8cqw;border-radius:50%;background:var(--sa);margin-bottom:auto}
+.site.m{padding:7cqw 6cqw;gap:4.5cqw}
+.site.m .s-nav{font-size:5cqw}
+.site.m .s-logo{font-size:6.4cqw;max-width:100%}
+.site.m .s-links,.site.m .s-nav .s-btn{display:none}
+.site.m .s-kick{font-size:4.2cqw;margin-top:4cqw}
+.site.m .s-name{font-size:min(16cqw,calc(240cqw / var(--len,10)))}
+.site.m .s-head{font-size:6.2cqw}
+.site.m .s-btn.big{font-size:5.4cqw;padding:4cqw 5cqw;border-radius:var(--sr,1.6cqw)}
+.site.m .s-cards{grid-template-columns:1fr;gap:3cqw}
+.site.m .s-cards b{height:auto;font-size:5cqw;padding:4cqw;grid-template-columns:auto 1fr;align-items:center;gap:3cqw}
+.site.m .s-cards b::before{width:6cqw;height:6cqw;margin:0}
+.site.m .s-cards b:nth-child(3){display:none}
+
+/* prévia que acompanha o cursor */
+.peek{position:fixed;left:0;top:0;width:300px;pointer-events:none;opacity:0;transform:translate(-9999px,0);z-index:5;transition:opacity .15s}
+.peek.on{opacity:1}
+.mini{background:#F4F8F7;color:#13272B;border:1px solid var(--ink);font-family:Georgia,serif;aspect-ratio:4/3;padding:14px;display:grid;gap:8px;align-content:start;overflow:hidden}
+.mini .r{display:flex;justify-content:space-between;font:600 8px/1 system-ui,sans-serif}
+.mini .r i{background:#1B7A6C;color:#fff;font-style:normal;padding:4px 6px;border-radius:2px}
+.mini h4{font-weight:400;font-size:19px;line-height:1.1;margin:10px 0 0;max-width:13ch}
+.mini .g{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:6px}
+.mini .g b{height:30px;background:#fff;border:1px solid #D6E3E0;display:block}
+.mini .bar2{height:6px;width:60%;background:#D6E3E0}
+.mini.salao{background:#F7F1F4;color:#2A1630}
+.mini.salao h4 em{color:#7A3E9D}
+.mini.salao .r i{background:#7A3E9D;border-radius:9px}
+.mini.salao .bar2{background:#EADCE6}
+.mini.salao .g b{border-color:#EADCE6}
+.mini.cantina{background:repeating-linear-gradient(90deg,#B8321A 0 10px,#F6E7CC 0 20px) top/100% 8px no-repeat,#FFF8EC;color:#2B160C;font-family:Rockwell,"Roboto Slab",Georgia,serif;padding-top:22px}
+.mini.cantina h4{font-weight:700}
+.mini.cantina .r i{background:#B8321A}
+.mini.cantina .bar2{background:#F0DFC4}
+.mini.cantina .g b{border:1.5px solid #2B160C}
+.inline-peek{display:none;margin:0 0 18px;max-width:320px}
+
+.offer{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px);border-top:1px solid var(--ink);padding-top:22px}
+.offer > div{display:flex;flex-direction:column;align-items:flex-start}
+.offer h3{font-size:24px;font-weight:500;letter-spacing:-.02em;margin:0 0 8px}
+.offer p{margin:0 0 14px;color:var(--dim);max-width:34ch}
+.offer .price{font-family:var(--mono);font-size:14px;color:var(--ink);font-variant-numeric:tabular-nums}
+.offer .want{margin-top:18px;text-decoration:none;color:var(--blue);border-bottom:1px solid currentColor;padding-bottom:2px}
+.offer .want:hover{color:var(--ink)}
+
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;border-top:1px solid var(--ink)}
+.steps li{counter-increment:s;display:grid;grid-template-columns:56px minmax(0,1fr) minmax(0,1.3fr);gap:20px;padding-block:20px;border-bottom:1px solid var(--rule);align-items:start}
+.steps li::before{content:counter(s);font-family:var(--mono);font-size:13px;color:var(--blue)}
+.steps b{font-weight:500;font-size:22px;letter-spacing:-.02em}
+.steps span{color:var(--dim)}
+
+/* sobre */
+.about{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(24px,5vw,72px);padding-top:28px;align-items:start}
+.portrait{margin:0;width:clamp(120px,16vw,200px);aspect-ratio:4/5;background:var(--blue);color:var(--on-blue);display:grid;place-items:end start;padding:14px;font-weight:700;font-size:clamp(40px,5vw,64px);letter-spacing:-.05em;line-height:.8;overflow:hidden}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.about p.big{font-size:clamp(26px,3.2vw,40px);line-height:1.15;letter-spacing:-.02em;margin:0 0 28px;max-width:24ch;text-wrap:pretty}
+
+.contact .big{font-size:clamp(34px,6vw,84px);letter-spacing:-.045em;line-height:1;margin:0 0 26px;text-wrap:balance}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:start}
+.lines{display:grid;gap:14px;border-top:1px solid var(--ink);padding-top:22px}
+.line{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:baseline}
+.line .k{width:110px;color:var(--dim)}
+.line .v{font-size:clamp(20px,2.4vw,28px);letter-spacing:-.02em;overflow-wrap:anywhere}
+button.copy{font-family:var(--mono);font-size:12px;background:none;border:1px solid var(--rule);color:var(--ink);padding:5px 10px;cursor:pointer}
+button.copy:hover{border-color:var(--ink)}
+
+/* mensagem montada no estilo conversa */
+.chat{display:grid;gap:10px;padding-top:22px}
+.msg{max-width:min(40ch,94%);padding:12px 18px;border-radius:22px;line-height:1.6;margin:0}
+.msg.them{background:var(--rule);justify-self:start;border-bottom-left-radius:6px}
+.msg.me{background:var(--blue);color:var(--on-blue);justify-self:end;border-bottom-right-radius:6px}
+.msg.me select,.msg.me input{font:inherit;color:inherit;background:transparent;border:0;border-bottom:1.5px dashed currentColor;border-radius:0;padding:0 2px;margin:0;-webkit-appearance:none;appearance:none;cursor:pointer}
+.msg.me select{max-width:calc(100% - 1em)}
+.msg.me input{width:15ch;max-width:100%;cursor:text}
+.msg.me input::placeholder{color:inherit;opacity:.65}
+.msg.me select:focus-visible,.msg.me input:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.msg.me option{color:#121212;background:#fff}
+.pick{white-space:nowrap}
+.pick::after{content:"▾";font-size:.75em;margin-left:2px}
+.send{justify-self:end;margin-top:6px;text-decoration:none;border:1px solid var(--ink);padding:12px 18px;transition:background .2s,color .2s}
+.send:hover{background:var(--ink);color:var(--paper)}
+
+footer{margin-top:clamp(72px,10vw,128px);border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--dim)}
+
+/* botão de cores */
+.palette{position:fixed;right:16px;bottom:16px;z-index:9;display:flex;align-items:center;gap:8px;background:var(--paper);color:var(--ink);border:1px solid var(--ink);border-radius:999px;padding:6px 14px 6px 6px;cursor:pointer;transition:background .3s,color .3s}
+.palette i{width:22px;height:22px;border-radius:50%;border:1px solid var(--ink);background:linear-gradient(135deg,var(--paper) 50%,var(--blue) 50%)}
+.palette:hover i{transform:rotate(180deg);transition:transform .4s}
+
+@media (max-width:760px){
+  .intro,.offer,.study-grid,.contact-grid,.try{grid-template-columns:1fr}
+  .phone{width:30%}
+  .index a{grid-template-columns:1fr auto;gap:6px 14px}
+  .index .d{grid-column:1 / -1;grid-row:2}
+  .steps li{grid-template-columns:32px minmax(0,1fr);gap:6px 14px}
+  .steps span{grid-column:2}
+  .inline-peek{display:block}
+  .about{grid-template-columns:1fr}
+}
+@media (hover:none){.peek{display:none}.inline-peek{display:block}}
+@media (prefers-reduced-motion:reduce){.peek{transition:none}}
+
+/* ===== animações ligadas ao scroll ===== */
+.page{overflow-x:clip}
+.progress{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);height:3px;background:var(--blue);transform-origin:0 50%;transform:scaleX(var(--p,0));z-index:10;pointer-events:none}
+.name .w{display:inline-block;will-change:transform}
+.name .dotc{display:inline-block;transform-origin:50% 85%;will-change:transform}
+.reveal .wd{transition:color .4s ease}
+.js .reveal .wd{color:var(--dim)}
+.js .reveal .wd.in{color:var(--ink)}
+.rule{border-top:0!important;position:relative}
+.rule::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--ink);transform-origin:0 50%;transform:scaleX(var(--d,1));transition:transform 1.1s cubic-bezier(.2,.7,.1,1)}
+.index .t{display:inline-block;will-change:transform}
+.steps li::before{width:30px;height:30px;border:1px solid var(--rule);border-radius:50%;display:grid;place-items:center;font-size:12px;transition:background .3s,color .3s,border-color .3s}
+.steps li.on::before{background:var(--blue);color:var(--on-blue);border-color:var(--blue)}
+.steps li b{transition:color .3s}
+@media (prefers-reduced-motion:reduce){
+  .name .w,.name .dotc,.index .t,.name .l{transform:none!important}
+  .js .reveal .wd{color:var(--ink)}
+  .rule::before{transform:none;transition:none}
+  .progress{display:none}
+}
+</style>
+</head>
+<body>
+
+
+<div class="progress" aria-hidden="true"></div>
+<div class="page">
+  <header class="bar mono">
+    <a href="#topo">Arthur Medeiros · sites para negócios pequenos</a>
+    <nav aria-label="Seções">
+      <a href="#trabalhos">Trabalhos</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#processo">Processo</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato →</a>
+    </nav>
+    <span><span class="dot" aria-hidden="true"></span>Pegando projetos · <span id="clock">RS</span></span>
+  </header>
+
+  <main id="topo">
+  <h1 class="name" aria-label="Arthur Medeiros"><span class="w w1">arthur</span><br><span class="w w2">medeiros<span class="dotc">.</span></span></h1>
+
+  <div class="intro">
+    <p class="big reveal">Faço sites para negócios pequenos. Rápidos, fáceis de atualizar e com a cara de quem é dono.</p>
+    <p class="small">Desenho e programo cada página eu mesmo, do primeiro rabisco até o site no ar. Sem template comprado e sem construtor de arrastar.</p>
+  </div>
+
+  <section id="trabalhos" aria-labelledby="h-trab">
+    <h2 id="h-trab">Trabalhos</h2>
+    <ul class="index rule">
+      <li>
+        <a href="https://claude.ai/artifact/KV32q9YsLN9zN1QqJTb9D4" target="_blank" rel="noopener" data-peek="prado">
+          <span class="t">Prado Odontologia</span>
+          <span class="d">Site de consultório com horários, tratamentos e pedido de agendamento</span>
+          <span class="y mono">2026 · estudo <span class="sr">(abre em nova aba)</span>↗</span>
+        </a>
+        <div class="inline-peek" data-tpl="prado" aria-hidden="true"></div>
+        <details class="study">
+          <summary class="mono"><span class="plus" aria-hidden="true">+</span>Ver como foi feito</summary>
+          <div class="study-body">
+            <dl class="facts mono">
+              <div><dt>Papel</dt><dd>Design e código</dd></div>
+              <div><dt>Cliente</dt><dd>Fictício, para estudo</dd></div>
+              <div><dt>Feito com</dt><dd>HTML, CSS e JavaScript</dd></div>
+            </dl>
+            <div class="study-grid">
+              <div>
+                <div class="ba" id="ba">
+                  <div class="scr final" aria-hidden="true">
+                    <div class="nav"><span>Prado Odontologia</span><span class="links"><span>Tratamentos</span><span>Horários</span></span></div>
+                    <h4>Cuidado com os dentes, sem pressa.</h4>
+                    <div class="p"></div><div class="p"></div>
+                    <span class="btn">Agendar</span>
+                    <div class="cards"><b></b><b></b><b></b></div>
+                  </div>
+                  <div class="scr wf" aria-hidden="true">
+                    <div class="nav"><span class="box">logo</span><span class="box">menu</span></div>
+                    <div class="h">título curto e calmo</div>
+                    <div class="p"></div><div class="p"></div>
+                    <span class="box" style="justify-self:start">botão agendar</span>
+                    <div class="cards"><b><span>tratamento</span></b><b><span>tratamento</span></b><b><span>tratamento</span></b></div>
+                  </div>
+                  <span class="ba-line" aria-hidden="true"></span>
+                  <span class="ba-tag l mono" aria-hidden="true">rascunho</span>
+                  <span class="ba-tag r mono" aria-hidden="true">final</span>
+                  <input type="range" min="0" max="100" value="50" aria-label="Comparar rascunho e versão final do Prado Odontologia">
+                </div>
+                <p class="note mono">Arraste para comparar o rascunho com a versão final.</p>
+              </div>
+              <ol class="phases">
+                <li><b>01 · Descoberta</b><span>Listei o que um paciente procura antes de marcar consulta: tratamentos, horários, onde fica e como agendar.</span></li>
+                <li><b>02 · Rascunho</b><span>Montei a página em blocos, pensando primeiro no celular, com o botão de agendar sempre à vista.</span></li>
+                <li><b>03 · Visual</b><span>Serifa e verde-água, para o site passar a mesma calma que o consultório quer passar.</span></li>
+                <li><b>04 · No ar</b><span>Código escrito à mão, pensado para abrir rápido no celular.</span></li>
+              </ol>
+            </div>
+          </div>
+        </details>
+      </li>
+      <li>
+        <a href="estudos/salao-jacaranda/index.html" data-peek="salao">
+          <span class="t">Salão Jacarandá</span>
+          <span class="d">Salão de beleza onde a cliente escolhe os serviços, vê o valor e pede o horário</span>
+          <span class="y mono">2026 · estudo</span>
+        </a>
+        <div class="inline-peek" data-tpl="salao" aria-hidden="true"></div>
+        <details class="study">
+          <summary class="mono"><span class="plus" aria-hidden="true">+</span>Ver como foi feito</summary>
+          <div class="study-body">
+            <dl class="facts mono">
+              <div><dt>Papel</dt><dd>Design e código</dd></div>
+              <div><dt>Cliente</dt><dd>Fictício, para estudo</dd></div>
+              <div><dt>Destaque</dt><dd>Pedido de horário com serviços e valor</dd></div>
+            </dl>
+            <div class="study-grid">
+              <div>
+                <div class="ba">
+                  <div class="scr final salao has-art" aria-hidden="true">
+                    <div class="nav"><span>Jacarandá</span><span class="links"><span>Serviços</span><span>Equipe</span></span></div>
+                    <h4>Seu cabelo do jeito que você <em>imaginou.</em></h4>
+                    <div class="p"></div><div class="p"></div>
+                    <span class="btn">Marcar horário</span>
+                    <div class="cards"><b></b><b></b><b></b></div>
+                    <span class="art"></span>
+                  </div>
+                  <div class="scr wf has-art" aria-hidden="true">
+                    <div class="nav"><span class="box">logo</span><span class="box">menu</span></div>
+                    <div class="h">título + promessa</div>
+                    <div class="p"></div><div class="p"></div>
+                    <span class="box" style="justify-self:start">botão horário</span>
+                    <div class="cards"><b><span>serviço + preço</span></b><b><span>serviço + preço</span></b><b><span>serviço + preço</span></b></div>
+                    <span class="art arch">imagem</span>
+                  </div>
+                  <span class="ba-line" aria-hidden="true"></span>
+                  <span class="ba-tag l mono" aria-hidden="true">rascunho</span>
+                  <span class="ba-tag r mono" aria-hidden="true">final</span>
+                  <input type="range" min="0" max="100" value="50" aria-label="Comparar rascunho e versão final do Salão Jacarandá">
+                </div>
+                <p class="note mono">Arraste para comparar o rascunho com a versão final.</p>
+              </div>
+              <ol class="phases">
+                <li><b>01 · Descoberta</b><span>Em salão, as perguntas são sempre as mesmas: quanto custa e quando tem horário. As duas respostas foram para o topo.</span></li>
+                <li><b>02 · Rascunho</b><span>Serviços em lista com preço “a partir de” e um resumo ao lado que soma o valor e o tempo enquanto a cliente escolhe.</span></li>
+                <li><b>03 · Visual</b><span>Roxo do jacarandá, serifa com itálico e formas de arco. Elegante sem parecer caro demais.</span></li>
+                <li><b>04 · No ar</b><span>Na versão real, o pedido chega no WhatsApp do salão já com os serviços, a profissional e o melhor dia.</span></li>
+              </ol>
+            </div>
+          </div>
+        </details>
+      </li>
+      <li>
+        <a href="estudos/cantina-dona-zeli/index.html" data-peek="cantina">
+          <span class="t">Cantina Dona Zeli</span>
+          <span class="d">Restaurante de almoço com o prato do dia aparecendo sozinho e pedido de marmita</span>
+          <span class="y mono">2026 · estudo</span>
+        </a>
+        <div class="inline-peek" data-tpl="cantina" aria-hidden="true"></div>
+        <details class="study">
+          <summary class="mono"><span class="plus" aria-hidden="true">+</span>Ver como foi feito</summary>
+          <div class="study-body">
+            <dl class="facts mono">
+              <div><dt>Papel</dt><dd>Design e código</dd></div>
+              <div><dt>Cliente</dt><dd>Fictício, para estudo</dd></div>
+              <div><dt>Destaque</dt><dd>Cardápio que muda sozinho conforme o dia</dd></div>
+            </dl>
+            <div class="study-grid">
+              <div>
+                <div class="ba">
+                  <div class="scr final cantina has-art" aria-hidden="true">
+                    <div class="nav"><span>Cantina Dona Zeli</span><span class="links"><span>Cardápio</span><span>Marmitas</span></span></div>
+                    <h4>Almoço caseiro, todo dia, igual de vó.</h4>
+                    <div class="p"></div><div class="p"></div>
+                    <span class="btn">Pedir marmita</span>
+                    <div class="cards"><b></b><b></b><b></b></div>
+                    <span class="art"></span>
+                  </div>
+                  <div class="scr wf has-art" aria-hidden="true">
+                    <div class="nav"><span class="box">logo</span><span class="box">menu</span></div>
+                    <div class="h">título + prato do dia</div>
+                    <div class="p"></div><div class="p"></div>
+                    <span class="box" style="justify-self:start">botão marmita</span>
+                    <div class="cards"><b><span>seg</span></b><b><span>ter</span></b><b><span>qua…</span></b></div>
+                    <span class="art round">foto do prato</span>
+                  </div>
+                  <span class="ba-line" aria-hidden="true"></span>
+                  <span class="ba-tag l mono" aria-hidden="true">rascunho</span>
+                  <span class="ba-tag r mono" aria-hidden="true">final</span>
+                  <input type="range" min="0" max="100" value="50" aria-label="Comparar rascunho e versão final da Cantina Dona Zeli">
+                </div>
+                <p class="note mono">Arraste para comparar o rascunho com a versão final.</p>
+              </div>
+              <ol class="phases">
+                <li><b>01 · Descoberta</b><span>Restaurante de almoço muda de prato todo dia. O site precisava mostrar o de hoje sem ninguém mexer em código.</span></li>
+                <li><b>02 · Rascunho</b><span>Cardápio da semana que já abre no dia certo, e a marmita logo abaixo, com tamanho e quantidade.</span></li>
+                <li><b>03 · Visual</b><span>Toalha xadrez, letra grossa e cores de cozinha. Dá fome antes de rolar a página.</span></li>
+                <li><b>04 · No ar</b><span>Aviso de aberto ou fechado em tempo real e pedido de marmita com o total calculado.</span></li>
+              </ol>
+            </div>
+          </div>
+        </details>
+      </li>
+      <li>
+        <a href="#seu-negocio" class="ghost">
+          <span class="t">O próximo pode ser o seu</span>
+          <span class="d">Teste aqui embaixo com o nome do seu negócio</span>
+          <span class="y mono">↓</span>
+        </a>
+      </li>
+    </ul>
+    <p class="note mono">Os três trabalhos são estudos com clientes fictícios, feitos para mostrar o processo.</p>
+  </section>
+
+  <section id="seu-negocio" aria-labelledby="h-seu">
+    <h2 id="h-seu">E o seu negócio?</h2>
+    <div class="try rule">
+      <div>
+        <p class="try-q">Meu negócio é
+          <span class="pick"><select id="t-tipo" aria-label="Tipo de negócio">
+            <option value="clinica">uma clínica</option>
+            <option value="salao">um salão</option>
+            <option value="restaurante">um restaurante</option>
+            <option value="loja">uma loja</option>
+            <option value="escritorio">um escritório</option>
+          </select></span>
+          e se chama <input id="t-nome" type="text" maxlength="28" placeholder="nome aqui" aria-label="Nome do seu negócio" autocomplete="organization">.
+        </p>
+        <p class="note mono">É só um esboço automático para você ter uma ideia. O seu de verdade eu desenho do zero.</p>
+        <a class="want mono" id="t-go" href="#contato">Quero um assim →</a>
+      </div>
+      <div class="devices" aria-hidden="true">
+        <div class="browser">
+          <div class="chrome"><i></i><i></i><i></i><span class="url mono" id="t-url">seunegocio.com.br</span></div>
+          <div class="site" id="t-site"></div>
+        </div>
+        <div class="phone"><div class="site m" id="t-phone"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos" aria-labelledby="h-faco">
+    <h2 id="h-faco">O que eu faço</h2>
+    <div class="offer rule">
+      <div>
+        <h3>Página única</h3>
+        <p>Uma página com o essencial: quem você é, o que oferece, horários, mapa e botão de WhatsApp.</p>
+        <span class="price">pronto em cerca de 5 dias úteis</span>
+        <a class="want mono" href="#contato" data-plan="queria uma página única">Quero esse →</a>
+      </div>
+      <div>
+        <h3>Site completo</h3>
+        <p>Serviços detalhados, galeria, perguntas frequentes e seu negócio aparecendo direito no Google.</p>
+        <span class="price">pronto em cerca de 10 dias úteis</span>
+        <a class="want mono" href="#contato" data-plan="queria um site completo">Quero esse →</a>
+      </div>
+      <div>
+        <h3>Site com agendamento</h3>
+        <p>Tudo do site completo, mais agenda online para o cliente marcar horário sozinho.</p>
+        <span class="price">pronto em cerca de 15 dias úteis</span>
+        <a class="want mono" href="#contato" data-plan="queria um site com agendamento">Quero esse →</a>
+      </div>
+    </div>
+    <p class="note mono">O valor depende do tamanho do projeto. Depois de uma conversa rápida, te mando o orçamento por escrito.</p>
+  </section>
+
+  <section id="processo" aria-labelledby="h-como">
+    <h2 id="h-como">Como funciona</h2>
+    <ol class="steps rule">
+      <li><b>A gente conversa</b><span>Uns 15 minutos, por chamada ou pessoalmente. Você me conta como o negócio funciona e quem são seus clientes.</span></li>
+      <li><b>Eu mostro um rascunho</b><span>Antes de você pagar o restante, já vê como a página vai ficar e pede o que quiser mudar.</span></li>
+      <li><b>O site vai pro ar</b><span>Com seu domínio, rápido no celular e com o botão de contato funcionando.</span></li>
+      <li><b>Você não fica sozinho</b><span>Mudou o horário, o preço ou o cardápio? Me chama e eu atualizo.</span></li>
+    </ol>
+  </section>
+
+  <section id="sobre" aria-labelledby="h-sobre">
+    <h2 id="h-sobre">Sobre</h2>
+    <div class="about rule">
+      <!-- Troque o monograma por uma foto sua: <figure class="portrait"><img src="foto.jpg" alt="Arthur Medeiros"></figure> -->
+      <figure class="portrait" aria-hidden="true">am.</figure>
+      <div>
+        <p class="big reveal">Negócio pequeno não precisa de site enorme. Precisa que o cliente ache o horário, entenda o que você faz e consiga te chamar em dois toques.</p>
+        <dl class="facts mono">
+          <div><dt>Base</dt><dd>Rio Grande do Sul</dd></div>
+          <div><dt>Estudo</dt><dd>Unipampa</dd></div>
+          <div><dt>Ferramentas</dt><dd>HTML, CSS e JavaScript</dd></div>
+          <div><dt>Atendimento</dt><dd>Por chamada ou pessoalmente</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contato" aria-labelledby="h-cont">
+    <h2 id="h-cont">Contato</h2>
+    <p class="big reveal">Tem um negócio sem site, ou com um site que te dá vergonha? Me chama.</p>
+    <div class="contact-grid">
+      <form class="chat rule" id="chat" aria-label="Montar mensagem para o WhatsApp" onsubmit="return false">
+        <p class="msg them">Oi! Monta a mensagem aqui que ela abre pronta no WhatsApp.</p>
+        <p class="msg me">Oi Arthur! Tenho
+          <span class="pick"><select id="c-tipo" aria-label="Tipo de negócio">
+            <option>uma clínica</option><option>um consultório</option><option>um salão</option><option>uma loja</option><option>um restaurante</option><option>um escritório</option><option>outro tipo de negócio</option>
+          </select></span>
+          <input id="c-nome" type="text" placeholder="nome (opcional)" aria-label="Nome do negócio, opcional" autocomplete="organization">
+          e <span class="pick"><select id="c-plano" aria-label="O que você procura">
+            <option>queria uma página única</option><option>queria um site completo</option><option>queria um site com agendamento</option><option>queria ajuda para escolher</option>
+          </select></span>.
+        </p>
+        <a class="send mono" id="c-send" href="https://wa.me/5555991275488" target="_blank" rel="noopener">Abrir no WhatsApp →</a>
+      </form>
+      <div class="lines rule">
+        <div class="line"><span class="k mono">WhatsApp</span><a class="v" id="wpp" href="https://wa.me/5555991275488" target="_blank" rel="noopener">(55) 99127-5488</a><button class="copy" type="button" data-copy="wpp" aria-label="Copiar WhatsApp">copiar</button></div>
+        <div class="line"><span class="k mono">E-mail</span><a class="v" id="mail" href="mailto:arthurmedeiros.devv@gmail.com">arthurmedeiros.devv@gmail.com</a><button class="copy" type="button" data-copy="mail" aria-label="Copiar e-mail">copiar</button></div>
+        <div class="line"><span class="k mono">Instagram</span><a class="v" href="https://www.instagram.com/medeiros__08/" target="_blank" rel="noopener">@medeiros__08</a></div>
+      </div>
+    </div>
+    <span class="sr" aria-live="polite" id="live"></span>
+  </section>
+  </main>
+
+  <footer class="mono">
+    <span>Feito à mão em HTML, CSS e um pouco de JavaScript. Fontes: Bricolage Grotesque e JetBrains Mono.</span>
+    <span>© 2026 Arthur Medeiros</span>
+  </footer>
+</div>
+
+<button class="palette mono" type="button" id="palette"><i aria-hidden="true"></i><span id="palette-name">cores</span></button>
+
+<div class="peek" id="peek" aria-hidden="true"></div>
+
+<template id="mini-prado">
+  <div class="mini">
+    <div class="r"><span>Prado Odontologia</span><i>Agendar</i></div>
+    <h4>Cuidado com os dentes, sem pressa.</h4>
+    <div class="bar2"></div>
+    <div class="g"><b></b><b></b><b></b></div>
+  </div>
+</template>
+<template id="mini-salao">
+  <div class="mini salao">
+    <div class="r"><span>Jacarandá</span><i>Marcar horário</i></div>
+    <h4>Seu cabelo do jeito que você <em>imaginou.</em></h4>
+    <div class="bar2"></div>
+    <div class="g"><b></b><b></b><b></b></div>
+  </div>
+</template>
+<template id="mini-cantina">
+  <div class="mini cantina">
+    <div class="r"><span>Cantina Dona Zeli</span><i>Pedir marmita</i></div>
+    <h4>Almoço caseiro, todo dia, igual de vó.</h4>
+    <div class="bar2"></div>
+    <div class="g"><b></b><b></b><b></b></div>
+  </div>
+</template>
+
+<script>
+(function(){
+  // relógio no fuso de quem faz o site
+  var c=document.getElementById('clock');
+  function tick(){
+    try{c.textContent=new Intl.DateTimeFormat('pt-BR',{hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'}).format(new Date())+' no RS';}catch(e){c.textContent='RS';}
+  }
+  tick(); setInterval(tick,30000);
+
+  // prévia do trabalho (mouse e teclado)
+  var peek=document.getElementById('peek'), peekKey=null;
+  function tpl(k){return document.getElementById('mini-'+k).content.cloneNode(true);}
+  function fill(k){ if(peekKey===k) return; peekKey=k; peek.textContent=''; peek.appendChild(tpl(k)); }
+  document.querySelectorAll('.inline-peek').forEach(function(el){el.appendChild(tpl(el.dataset.tpl));});
+  var hover=window.matchMedia('(hover:hover)').matches;
+  function place(x,y){
+    x=Math.min(x+24, window.innerWidth-320); y=Math.min(y+24, window.innerHeight-240);
+    peek.style.transform='translate('+x+'px,'+y+'px) rotate(-2deg)';
+  }
+  document.querySelectorAll('[data-peek]').forEach(function(a){
+    if(!hover) return;
+    a.addEventListener('mouseenter',function(){fill(a.dataset.peek); peek.classList.add('on');});
+    a.addEventListener('mouseleave',function(){peek.classList.remove('on');});
+    a.addEventListener('mousemove',function(e){place(e.clientX,e.clientY);});
+    a.addEventListener('focus',function(){var r=a.getBoundingClientRect(); fill(a.dataset.peek); place(r.left+r.width*0.45,r.bottom-12); peek.classList.add('on');});
+    a.addEventListener('blur',function(){peek.classList.remove('on');});
+  });
+
+  // comparação rascunho × final
+  document.querySelectorAll('.ba').forEach(function(ba){
+    var range=ba.querySelector('input');
+    range.addEventListener('input',function(){ba.style.setProperty('--x',range.value+'%');});
+  });
+
+  // botões de copiar
+  var live=document.getElementById('live');
+  document.querySelectorAll('button.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var el=document.getElementById(b.dataset.copy), txt=el.textContent.trim();
+      function done(){b.textContent='copiado';live.textContent='Copiado: '+txt;setTimeout(function(){b.textContent='copiar';},1600);}
+      function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='selecionado';live.textContent='Texto selecionado, use Ctrl+C';}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,fallback);}else{fallback();}
+    });
+  });
+
+  // mensagem pronta para o WhatsApp
+  var tipo=document.getElementById('c-tipo'), nome=document.getElementById('c-nome'), plano=document.getElementById('c-plano'), send=document.getElementById('c-send');
+  function msg(){
+    var n=nome.value.trim();
+    var t='Oi Arthur! Tenho '+tipo.value+(n?' ('+n+')':'')+' e '+plano.value+'. Vi seu portfólio.';
+    send.href='https://wa.me/5555991275488?text='+encodeURIComponent(t);
+  }
+  [tipo,nome,plano].forEach(function(el){el.addEventListener('input',msg);el.addEventListener('change',msg);});
+  msg();
+  document.querySelectorAll('[data-plan]').forEach(function(a){
+    a.addEventListener('click',function(){plano.value=a.dataset.plan; msg();});
+  });
+
+  // esboço automático: o visitante vê o próprio negócio num site
+  var kinds={
+    clinica:{say:'uma clínica',kick:'Clínica',head:'Cuidado de verdade, com hora marcada.',links:['Tratamentos','Equipe','Contato'],cta:'Agendar consulta',cards:['Consultas','Exames','Convênios'],sb:'#F4F8F7',si:'#13272B',sa:'#1B7A6C',so:'#FFFFFF',sc:'#FFFFFF',sl:'#D6E3E0',sf:'Georgia,"Times New Roman",serif',sw:'400'},
+    salao:{say:'um salão',kick:'Salão de beleza',head:'Seu cabelo do jeito que você imaginou.',links:['Serviços','Equipe','Preços'],cta:'Marcar horário',cards:['Corte','Coloração','Escova'],sb:'#F7F1F4',si:'#2A1630',sa:'#7A3E9D',so:'#FFFFFF',sc:'#FFFFFF',sl:'#EADCE6',sf:'Georgia,"Times New Roman",serif',sw:'400',ss:'italic',sr:'99px'},
+    restaurante:{say:'um restaurante',kick:'Restaurante',head:'Comida caseira, todo dia, do jeito de casa.',links:['Cardápio','Horários','Onde fica'],cta:'Pedir pelo WhatsApp',cards:['Prato do dia','Marmitas','Sobremesas'],sb:'#FFF8EC',si:'#2B160C',sa:'#B8321A',so:'#FFFFFF',sc:'#FFFFFF',sl:'#EBD9BA',sf:'Rockwell,"Roboto Slab",Georgia,serif',sw:'700'},
+    loja:{say:'uma loja',kick:'Loja',head:'Chegou coisa nova. Vem ver de perto.',links:['Novidades','Categorias','Endereço'],cta:'Ver produtos',cards:['Novidades','Promoções','Mais vendidos'],sb:'#FFFFFF',si:'#141414',sa:'#D2461F',so:'#FFFFFF',sc:'#F4F4F2',sl:'#E6E6E2',sf:'var(--display)',sw:'700'},
+    escritorio:{say:'um escritório',kick:'Escritório',head:'A parte chata a gente resolve. Você cuida do negócio.',links:['Serviços','Sobre','Contato'],cta:'Falar com a gente',cards:['Consultoria','Documentos','Atendimento'],sb:'#F2F4F7',si:'#0F1E33',sa:'#1F4E8C',so:'#FFFFFF',sc:'#FFFFFF',sl:'#DCE2EA',sf:'"Helvetica Neue",Arial,sans-serif',sw:'700'}
+  };
+  var tTipo=document.getElementById('t-tipo'), tNome=document.getElementById('t-nome'), tUrl=document.getElementById('t-url'), sites=[document.getElementById('t-site'),document.getElementById('t-phone')];
+  function el(tag,cls,txt){var e=document.createElement(tag); if(cls) e.className=cls; if(txt!=null) e.textContent=txt; return e;}
+  function slug(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'');}
+  function draw(){
+    var k=kinds[tTipo.value], name=tNome.value.trim()||'Seu Negócio';
+    tUrl.textContent=(slug(name)||'seunegocio')+'.com.br';
+    sites.forEach(function(s){
+      ['sb','si','sa','so','sc','sl','sf','sw','ss','sr'].forEach(function(v){ if(k[v]) s.style.setProperty('--'+v,k[v]); else s.style.removeProperty('--'+v); });
+      s.style.setProperty('--len',Math.max(name.length,6));
+      s.textContent='';
+      var nav=el('div','s-nav'); nav.appendChild(el('b','s-logo',name));
+      var links=el('span','s-links'); k.links.forEach(function(l){links.appendChild(el('span',null,l));}); nav.appendChild(links);
+      nav.appendChild(el('span','s-btn',k.cta)); s.appendChild(nav);
+      s.appendChild(el('span','s-kick',k.kick));
+      s.appendChild(el('div','s-name',name));
+      s.appendChild(el('p','s-head',k.head));
+      s.appendChild(el('span','s-btn big',k.cta));
+      var cards=el('div','s-cards'); k.cards.forEach(function(c){cards.appendChild(el('b',null,c));}); s.appendChild(cards);
+    });
+  }
+  tTipo.addEventListener('change',draw); tNome.addEventListener('input',draw);
+  draw();
+  document.getElementById('t-go').addEventListener('click',function(){
+    tipo.value=kinds[tTipo.value].say; nome.value=tNome.value.trim(); msg();
+  });
+
+  // botão de cores: claro → escuro → azul → areia
+  var themes=[['light','claro'],['dark','escuro'],['azul','azul'],['areia','areia']];
+  var root=document.documentElement, btn=document.getElementById('palette'), label=document.getElementById('palette-name'), meta=document.querySelector('meta[name="theme-color"]');
+  function current(){
+    var t=root.getAttribute('data-theme');
+    if(t) return t;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+  }
+  function sync(){
+    var id=current(), i=0;
+    themes.forEach(function(t,k){if(t[0]===id) i=k;});
+    var next=themes[(i+1)%themes.length][1];
+    label.textContent=themes[i][1];
+    btn.setAttribute('aria-label','Cores do site: '+themes[i][1]+'. Trocar para '+next);
+    meta.setAttribute('content',getComputedStyle(root).getPropertyValue('--paper').trim());
+  }
+  btn.addEventListener('click',function(){
+    var id=current(), i=0;
+    themes.forEach(function(t,k){if(t[0]===id) i=k;});
+    var n=themes[(i+1)%themes.length][0];
+    root.setAttribute('data-theme',n);
+    try{localStorage.setItem('tema',n);}catch(e){}
+    sync();
+  });
+  sync();
+})();
+</script>
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('js');
+  // separa os textos em palavras para acender uma a uma
+  document.querySelectorAll('.reveal').forEach(function(el){
+    var words=el.textContent.trim().split(/\s+/);
+    el.textContent='';
+    words.forEach(function(w,i){
+      var s=document.createElement('span'); s.className='wd'; s.textContent=w;
+      el.appendChild(s); if(i<words.length-1) el.appendChild(document.createTextNode(' '));
+    });
+  });
+  // separa o nome em letras que reagem ao mouse
+  document.querySelectorAll('.name .w').forEach(function(w){
+    [].slice.call(w.childNodes).forEach(function(node){
+      if(node.nodeType!==3) return;
+      var frag=document.createDocumentFragment();
+      node.textContent.split('').forEach(function(ch){
+        var s=document.createElement('span'); s.className='l'; s.textContent=ch;
+        s.style.setProperty('--r',(Math.random()*24-12).toFixed(1)+'deg');
+        frag.appendChild(s);
+      });
+      w.replaceChild(frag,node);
+    });
+  });
+  var w1=document.querySelector('.name .w1'), w2=document.querySelector('.name .w2'), dot=document.querySelector('.name .dotc');
+  var reveals=[].slice.call(document.querySelectorAll('.reveal'));
+  var rules=[].slice.call(document.querySelectorAll('.rule'));
+  var titles=[].slice.call(document.querySelectorAll('.index .t'));
+  var steps=[].slice.call(document.querySelectorAll('.steps li'));
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  // linhas abaixo da dobra começam recolhidas
+  var vh0=window.innerHeight;
+  rules.forEach(function(r){ if(!reduce && r.getBoundingClientRect().top>vh0*0.92) r.style.setProperty('--d','0'); });
+  var ticking=false;
+  function update(){
+    ticking=false;
+    var y=window.scrollY, vh=window.innerHeight;
+    var max=document.documentElement.scrollHeight-vh;
+    root.style.setProperty('--p', max>0? (y/max).toFixed(4) : 0);
+    if(reduce){ document.querySelectorAll('.wd').forEach(function(w){w.classList.add('in');}); steps.forEach(function(li){li.classList.add('on');}); return; }
+    // nome: as duas palavras se afastam e o ponto cresce
+    var p=clamp(y/(vh*0.8),0,1), e=p*p*(3-2*p);
+    w1.style.transform='translateX('+(-e*22)+'%)';
+    w2.style.transform='translateX('+(e*14)+'%)';
+    dot.style.transform='scale('+(1+e*2.2)+') rotate('+(e*-12)+'deg)';
+    // palavras acendem conforme o parágrafo atravessa a tela
+    reveals.forEach(function(el){
+      var r=el.getBoundingClientRect();
+      var prog=clamp((vh*0.92-r.top)/(r.height+vh*0.35),0,1);
+      var ws=el.querySelectorAll('.wd'), n=ws.length;
+      for(var i=0;i<n;i++) ws[i].classList.toggle('in', i < Math.ceil(prog*n));
+    });
+    // linhas se desenham ao entrar
+    rules.forEach(function(r){ if(r.getBoundingClientRect().top<vh*0.9) r.style.setProperty('--d','1'); });
+    // títulos dos trabalhos deslizam de leve
+    titles.forEach(function(t){
+      var r=t.getBoundingClientRect(), off=((r.top+r.height/2)-vh/2)/vh;
+      t.style.transform='translateX('+(off*-48).toFixed(1)+'px)';
+    });
+    // passos acendem ao passar do meio da tela
+    steps.forEach(function(li){ if(li.getBoundingClientRect().top<vh*0.62) li.classList.add('on'); else li.classList.remove('on'); });
+  }
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(update);} }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  // linhas dentro do estudo só existem depois de abrir
+  document.querySelectorAll('details').forEach(function(d){d.addEventListener('toggle',onScroll);});
+  update();
+})();
+</script>
+
+</body>
+</html>
