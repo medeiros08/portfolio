@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prado Odontologia · estudo de Arthur Medeiros</title>
+<meta name="description" content="Estudo com cliente fictício: site de consultório odontológico com horários, tratamentos e pedido de agendamento. Feito por Arthur Medeiros.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Young+Serif&display=swap">
+<style>
+/* Layout: faixa de demonstração, topo fixo, hero em duas colunas (texto + cartão de horários), seções em grade, agendamento no fim. */
+:root{
+  --bg:#F4F8F7; --surface:#FFFFFF; --fg:#13272B; --muted:#4F6568; --line:#D6E3E0;
+  --accent:#1B7A6C; --accent-fg:#FFFFFF; --soft:#E1EFEC; --warn:#B4531A; --demo:#13272B; --demo-fg:#F4F8F7;
+  --font-display:"Young Serif",Georgia,"Times New Roman",serif;
+  --font-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1A1C; --surface:#152629; --fg:#E6F0EE; --muted:#9DB5B2; --line:#26403F;
+    --accent:#4FC3AF; --accent-fg:#0B1819; --soft:#17302E; --warn:#E8955C; --demo:#E6F0EE; --demo-fg:#0E1A1C;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1A1C; --surface:#152629; --fg:#E6F0EE; --muted:#9DB5B2; --line:#26403F;
+  --accent:#4FC3AF; --accent-fg:#0B1819; --soft:#17302E; --warn:#E8955C; --demo:#E6F0EE; --demo-fg:#0E1A1C;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:17px;line-height:1.6;padding-inline:0}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1080px;margin-inline:auto;padding-inline:20px}
+.demo{background:var(--demo);color:var(--demo-fg);font-size:14px;text-align:center;padding:8px 16px}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
+.brand{font-family:var(--font-display);font-size:22px;text-decoration:none}
+.brand small{display:block;font-family:var(--font-body);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+nav{display:flex;gap:22px;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover,nav a:focus-visible{color:var(--fg);text-decoration:underline}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font:600 16px var(--font-body);padding:13px 24px;border:0;border-radius:6px;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--fg);border:1.5px solid var(--line)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;padding-block:48px 64px}
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.hero h1{font-size:clamp(34px,5.2vw,56px);margin-bottom:20px}
+.hero p.lead{font-size:19px;color:var(--muted);max-width:52ch;margin-bottom:28px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.hours{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;min-width:0}
+.hours h2{font-size:22px;margin-bottom:14px}
+.hours dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0 0 18px}
+.hours dt{color:var(--muted)}
+.hours dd{margin:0;font-variant-numeric:tabular-nums;text-align:right}
+.hours .urg{font-size:15px;border-top:1px dashed var(--line);padding-top:14px;color:var(--muted)}
+section{padding-block:56px;border-top:1px solid var(--line)}
+section h2{font-size:clamp(28px,3.6vw,38px);margin-bottom:12px}
+.sub{color:var(--muted);max-width:60ch;margin-bottom:32px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
+.card h3{font-size:20px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:15.5px}
+.card .tag{display:inline-block;margin-top:12px;font-size:13px;background:var(--soft);color:var(--accent);padding:3px 10px;border-radius:99px;font-weight:600}
+.about{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:start}
+.portrait{aspect-ratio:4/5;max-width:100%;border-radius:14px;background:var(--soft);border:1px solid var(--line);display:grid;place-items:center;text-align:center;color:var(--muted);font-size:14px;padding:20px}
+.about p+p{margin-top:14px}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.facts span{background:var(--soft);padding:6px 14px;border-radius:99px;font-size:14px;font-weight:500}
+.quote{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
+.quote .ex{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--warn);font-weight:600;margin-bottom:10px}
+.quote p.t{font-family:var(--font-display);font-size:19px;line-height:1.4}
+.quote .who{margin-top:12px;color:var(--muted);font-size:14px}
+details{border-bottom:1px solid var(--line);padding-block:16px}
+summary{cursor:pointer;font-weight:600;font-size:18px;list-style-position:outside}
+details p{margin-top:10px;color:var(--muted);max-width:68ch}
+.book{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+form{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;display:grid;gap:14px;min-width:0}
+label{display:grid;gap:6px;font-weight:600;font-size:15px}
+input,select,textarea{font:400 16px var(--font-body);color:var(--fg);background:var(--bg);border:1.5px solid var(--line);border-radius:6px;padding:11px 12px;width:100%;min-width:0}
+textarea{min-height:84px;resize:vertical}
+#ok{background:var(--soft);color:var(--fg);border-radius:8px;padding:12px 14px;font-size:15px}
+.contact p{margin-bottom:10px}
+.contact b{display:block;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
+@media (max-width:820px){
+  nav{display:none}
+  .hero,.about,.book{grid-template-columns:1fr;gap:28px}
+  .grid{grid-template-columns:1fr}
+  .hero{padding-block:28px 40px}
+  .portrait{max-width:320px}
+}
+@media (min-width:821px) and (max-width:980px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (prefers-reduced-motion:no-preference){.btn{transition:filter .15s}}
+</style>
+</head>
+<body>
+
+<div class="demo">Site de demonstração com conteúdo fictício. Nome, endereço, telefone e registro profissional são exemplos. · <a href="../../index.html#trabalhos">← voltar ao portfólio</a></div>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#inicio">Prado Odontologia<small>Dra. Helena Prado · Cirurgiã-dentista</small></a>
+    <nav aria-label="Seções">
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a href="#agendar">Contato</a>
+    </nav>
+    <a class="btn" href="#agendar">Agendar consulta</a>
+  </header>
+
+  <div class="hero" id="inicio">
+    <div>
+      <p class="eyebrow">Odontologia clínica e preventiva</p>
+      <h1>Cuidado com os dentes, sem pressa e sem surpresa no orçamento.</h1>
+      <p class="lead">Na primeira consulta você faz a avaliação completa, vê a radiografia panorâmica com a doutora e sai com o plano de tratamento e os valores por escrito.</p>
+      <div class="cta-row">
+        <a class="btn" href="#agendar">Agendar avaliação</a>
+        <a class="btn ghost" href="#servicos">Ver tratamentos</a>
+      </div>
+    </div>
+    <aside class="hours" aria-label="Horário de atendimento">
+      <h2>Horário de atendimento</h2>
+      <dl>
+        <dt>Segunda a sexta</dt><dd>8h às 18h</dd>
+        <dt>Sábado</dt><dd>8h às 12h</dd>
+        <dt>Domingo</dt><dd>Fechado</dd>
+      </dl>
+      <p class="urg">Dor forte ou dente quebrado? Chame no WhatsApp: atendemos urgências no mesmo dia, conforme a agenda.</p>
+    </aside>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="servicos">
+    <h2>Tratamentos</h2>
+    <p class="sub">Os mais procurados no consultório. Todos começam por uma avaliação, para indicar só o que você precisa.</p>
+    <div class="grid">
+      <article class="card"><h3>Limpeza e prevenção</h3><p>Remoção de tártaro, polimento e orientação de higiene. Indicada a cada 6 meses.</p><span class="tag">Sessão de 40 min</span></article>
+      <article class="card"><h3>Restaurações</h3><p>Tratamento de cáries com resina da cor do seu dente, em geral numa única visita.</p><span class="tag">1 a 2 visitas</span></article>
+      <article class="card"><h3>Clareamento</h3><p>De consultório ou caseiro supervisionado, com avaliação prévia da sensibilidade.</p><span class="tag">2 a 3 semanas</span></article>
+      <article class="card"><h3>Aparelho ortodôntico</h3><p>Fixo, estético ou alinhadores, para adolescentes e adultos, com manutenção mensal.</p><span class="tag">Plano por escrito</span></article>
+      <article class="card"><h3>Canal e extrações</h3><p>Tratamento endodôntico e remoção de sisos com anestesia e pós-operatório acompanhado.</p><span class="tag">Urgência no dia</span></article>
+      <article class="card"><h3>Odontopediatria</h3><p>Consultas para crianças a partir de 1 ano, com atendimento calmo e acompanhamento dos pais.</p><span class="tag">Dos 1 aos 12 anos</span></article>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="about">
+      <div class="portrait" role="img" aria-label="Espaço reservado para a foto da profissional">Espaço da foto da profissional<br>(substitua pela foto real do cliente)</div>
+      <div>
+        <h2>Dra. Helena Prado</h2>
+        <p class="sub" style="margin-bottom:14px">Cirurgiã-dentista · CRO-RS 00000 (exemplo)</p>
+        <p>Formada em Odontologia, com especialização em dentística restauradora. Atende em consultório próprio, com agenda de poucos pacientes por turno para que cada consulta tenha o tempo necessário.</p>
+        <p>Antes de qualquer procedimento, explica o diagnóstico com as imagens do paciente e apresenta as opções com custo e duração.</p>
+        <div class="facts"><span>Consultório climatizado</span><span>Material esterilizado e descartável</span><span>Parcelamento no cartão</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="depoimentos">
+    <h2>O que os pacientes dizem</h2>
+    <p class="sub">Aqui entram depoimentos reais, com autorização de quem escreveu. O cartão abaixo só mostra o formato.</p>
+    <div class="grid">
+      <figure class="quote" style="margin:0"><p class="ex">Exemplo de formato, não é um depoimento real</p><p class="t">“Texto do depoimento do paciente entra aqui, em uma ou duas frases.”</p><p class="who">Nome do paciente · tratamento realizado</p></figure>
+    </div>
+  </section>
+
+  <section id="duvidas">
+    <h2>Dúvidas frequentes</h2>
+    <p class="sub">Respostas rápidas para o que mais perguntam antes de marcar.</p>
+    <details><summary>Quanto custa a primeira consulta?</summary><p>No modelo: R$ 120 com avaliação completa e radiografia panorâmica. Se você seguir com o tratamento na clínica, o valor é abatido. (Valor de exemplo.)</p></details>
+    <details><summary>Vocês atendem convênio?</summary><p>No modelo, atendemos particular com parcelamento em até 10 vezes. Informe aqui quais convênios o cliente realmente aceita.</p></details>
+    <details><summary>Dói? Tenho medo de dentista.</summary><p>Usamos anestesia tópica antes da injetável e explicamos cada etapa. Se quiser pausar, é só levantar a mão.</p></details>
+    <details><summary>Posso levar meu filho?</summary><p>Sim. Atendemos crianças a partir de 1 ano, e a primeira visita pode ser só uma conversa e um passeio pelo consultório.</p></details>
+  </section>
+
+  <section id="agendar">
+    <div class="book">
+      <div class="contact">
+        <h2>Agende sua consulta</h2>
+        <p class="sub">Preencha o formulário e a clínica confirma o horário pelo WhatsApp em até 1 dia útil.</p>
+        <p><b>Endereço (exemplo)</b>Rua das Palmeiras, 123, sala 4, Centro</p>
+        <p><b>WhatsApp (exemplo)</b>(00) 90000-0000</p>
+        <p><b>E-mail (exemplo)</b>contato@exemplo.com.br</p>
+        <p><b>Instagram (exemplo)</b>@pradoodonto</p>
+      </div>
+      <form id="f" novalidate>
+        <label for="nome">Nome<input id="nome" name="nome" autocomplete="name" required placeholder="Seu nome completo"></label>
+        <label for="tel">WhatsApp<input id="tel" name="tel" type="tel" autocomplete="tel" required placeholder="(00) 90000-0000"></label>
+        <label for="trat">Motivo da consulta
+          <select id="trat" name="trat">
+            <option>Avaliação geral</option><option>Limpeza</option><option>Dor ou urgência</option><option>Clareamento</option><option>Aparelho</option><option>Consulta infantil</option>
+          </select>
+        </label>
+        <label for="per">Melhor período
+          <select id="per" name="per"><option>Manhã</option><option>Tarde</option><option>Sábado de manhã</option></select>
+        </label>
+        <label for="msg">Mensagem (opcional)<textarea id="msg" name="msg"></textarea></label>
+        <button class="btn" type="submit">Pedir horário</button>
+        <p id="ok" role="status" hidden></p>
+      </form>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">Prado Odontologia · Site de demonstração · Responsável técnica: Dra. Helena Prado, CRO-RS 00000 (exemplo)</div>
+</footer>
+
+<script>
+(function(){
+  var f=document.getElementById('f'),ok=document.getElementById('ok');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=document.getElementById('nome').value.trim(),t=document.getElementById('tel').value.trim();
+    ok.hidden=false;
+    if(!n||!t){ok.textContent='Preencha nome e WhatsApp para pedir o horário.';return;}
+    ok.textContent='Pedido de exemplo registrado na tela, '+n.split(' ')[0]+'. Neste modelo, nenhum dado é enviado.';
+  });
+})();
+</script>
+
+</body>
+</html>
